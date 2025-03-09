@@ -1,15 +1,13 @@
 import { Fragment } from "react/jsx-runtime";
 import { MouseEvent } from "react";
 
-let localidades = [
+const localidades = [
   "Funchal",
   "Santa Cruz",
   "Rib Brava",
   "Calheta",
   "Porto Moniz",
 ];
-// localidades = [];
-
 const getMessage = () => {
   return localidades.length === 0 ? <p>No item found</p> : null;
 };
@@ -31,14 +29,10 @@ function ListGroup() {
     <>
       <h1>Titulo da lista</h1>
       {getMessage()}
+      {getMessage()}
       <ul className="list-group">
         {localidades.map((item) => (
-          <li
-            className="list-group-item"
-            key={item}
-            //onClick={() => console.log(item)}
-            onClick={handleClick}
-          >
+          <li className="list-group-item" key={item} onClick={handleClick}>
             {item}
           </li>
         ))}
