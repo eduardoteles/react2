@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 const localidades = [
@@ -8,19 +9,26 @@ const localidades = [
   "Porto Moniz",
 ];
 
-const getMessage = () => {
-  return localidades.length === 0 ? <p> List is empty </p> : null;
-};
-
 function ListGroup() {
+  //Hook
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
     <>
       <h1>Titulo da lista</h1>
-      {getMessage()}
       <ul className="list-group">
-        {localidades.map((item) => (
-          //As completxity grows, move logic to separate function
-          <li className="list-group-item" key={item} onClick={(event) => console.log(event)}>
+        {localidades.map((item, index) => (
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
+          >
             {item}
           </li>
         ))}
