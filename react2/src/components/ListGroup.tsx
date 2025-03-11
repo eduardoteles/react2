@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 function ListGroup() {
-  //Hook
   const localidades = [
     "Funchal",
     "Santa Cruz",
@@ -10,6 +9,7 @@ function ListGroup() {
     "Calheta",
     "Porto Moniz",
   ];
+  //Hook
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
