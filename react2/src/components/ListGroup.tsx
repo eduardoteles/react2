@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 
-function ListGroup() {
-  const localidades = [
-    "Funchal",
-    "Santa Cruz",
-    "Rib Brava",
-    "Calheta",
-    "Porto Moniz",
-  ];
-  //Hook
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+interface ListGroupProps {
+  cities: string[];
+  title: string;
+  //Signature function
+  //(item: string) => void;
+  onSelectItem: (item: string) => void;
+}
 
+function ListGroup(props: ListGroupProps) {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <>
-      <h1>Titulo da lista</h1>
+      <h1>{props.title}</h1>
       <ul className="list-group">
-        {localidades.map((item, index) => (
+        {props.cities.map((item, index) => (
           <li
             className={
               selectedIndex === index
@@ -26,6 +25,7 @@ function ListGroup() {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              props.onSelectItem(item);
             }}
           >
             {item}
