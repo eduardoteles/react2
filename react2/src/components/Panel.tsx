@@ -1,5 +1,3 @@
-import { useTheme } from "./hooks/ThemeContext";
-
 function Panel({
   title,
   children,
