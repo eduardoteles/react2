@@ -37,7 +37,7 @@ function App() {
       {/*  Reference hook */}
       <RefHook />
       {/*  Context hook */}
-      <ThemeContext.Provider value="dark">
+      <ThemeContext.Provider value="light">
         <Form />
       </ThemeContext.Provider>
     </div>
