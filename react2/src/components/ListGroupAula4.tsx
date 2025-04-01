@@ -1,17 +1,27 @@
 import { useState } from "react";
 
 interface ListGroupProps {
-  cities: string[];
-  title: string;
+  localidades: string[];
+  titulo: string;
+  //signature function
+  onSelectItem: (item: string) => void;
 }
 
-function ListGroup2(props: ListGroupProps) {
+function checkEmptyArray(localidades: string[]) {
+  if (localidades.length === 0) {
+    return <h1>Lista vazia</h1>;
+  }
+}
+
+function ListGroupAula4(props: ListGroupProps) {
+  //State Hook
   const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <>
-      <h1>{props.title}</h1>
+      {checkEmptyArray(props.localidades)}
+      <h1>{props.titulo}</h1>
       <ul className="list-group">
-        {props.cities.map((item, index) => (
+        {props.localidades.map((item, index) => (
           <li
             className={
               selectedIndex === index
@@ -21,6 +31,7 @@ function ListGroup2(props: ListGroupProps) {
             key={item}
             onClick={() => {
               setSelectedIndex(index);
+              props.onSelectItem(item);
             }}
           >
             {item}
@@ -30,4 +41,4 @@ function ListGroup2(props: ListGroupProps) {
     </>
   );
 }
-export default ListGroup2;
+export default ListGroupAula4;
